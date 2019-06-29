@@ -1,20 +1,32 @@
 class UsersController < ApplicationController
 
     get '/signup' do
+        binding.pry
         if logged_in?
-            redirect to :'users/profile'
+            redirect to '/users/profile'
         else
             erb :'users/signup'
         end
     end
 
-    post '/signup' do ### Checkpoint. Need to complete signup process
-        if params[:first_and_last] == "" || params[:email] == "" || params[:password] == ""
+    post '/signup' do 
+        if params[:first_last_name] == "" || params[:username] == "" || params[:pwd] == ""
             redirect '/signup'
+        else
+            @user = User.create(:username => params[:username], :first_last_name => params[:first_last_name], :password => params[:pwd])
+            session[:user_id] = @user.id 
+            redirect '/profile'
         end
-        @user = User.create(email: params[:email], first_and_last: params[:first_and_last], password: params[:password])
-        session[:user_id] = @user.id 
-        redirect '/login'
+    end
+
+    get '/profile' do 
+
+        if logged_in?
+            @user = User.find_by_id(session[:user_id])
+            erb :'users/profile'
+        else
+            redirect to '/'
+        end
     end
 
 end
