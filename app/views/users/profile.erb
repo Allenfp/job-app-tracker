@@ -1,5 +1,43 @@
 <div class="container">
-<h1>Greetings, <%= @user.first_last_name%></h1>
+<h1>Greetings, <%= @user.first_last_name %></h1>
 <br>
 <br>
-<h3><a href="/job/new">Click here to track a new application</a></h3>
+<h3><a href="/job/new">Track New Application</a></h3>
+<br>
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Req Experience</th>
+      <th scope="col">Posting Link</th>
+      <th scope="col">Resume Link</th>
+      <th scope="col">Contact Date</th>
+      <th scope="col">Onsite Date</th>
+      <th scope="col">Offer Date</th>
+      <th scope="col">Offer ($/yr)</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%i = 1%>
+  <% @jobs.each do |job, index| %>
+
+    <tr>
+      <th scope="row"><%= i %></th>
+      <td><%=job.title%></td>
+      <td><%=job.job_description%></td>
+      <td><%=job.min_years_exp%></td>
+      <td><a href="<%=job.website_applied ? job.website_applied : ""%>" target="_blank"><%= job.website_applied ? "View Posting" : ""%></a></td>
+      <td><a href="<%=job.resume_used ? job.resume_used : ""%>" target="_blank"><%= job.website_applied ? "View Resume" : ""%></a></td>
+      <td><%=job.contacted ? job.contacted.strftime("%Y-%m-%d") : "" %></td>
+      <td><%=job.onsite ? job.onsite.strftime("%Y-%m-%d") : "" %></td>
+      <td><%=job.offer ? job.offer.strftime("%Y-%m-%d") : "" %></td>
+      <td><%=job.offer_amount ? job.offer_amount.to_i : "" %></td>
+    </tr>
+    <%i += 1%>
+    <% end %>
+    
+    </tr>
+  </tbody>
+</table>
