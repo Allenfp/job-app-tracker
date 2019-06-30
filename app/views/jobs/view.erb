@@ -1,0 +1,15 @@
+<div class="container">
+<h1><%=@job.title%></h1>
+<h3><%=@job.job_description%></h3>
+<br>
+<p>Posting Link: <a href="<%=@job.website_applied ? @job.website_applied : ""%>" target="_blank"><%= @job.website_applied ? "View Posting" : "N/A"%></a></p>
+<p>Resume Link:  <a href="<%=@job.resume_used ? @job.resume_used : ""%>" target="_blank"><%= @job.website_applied ? "View Resume" : "N/A"%></a></p>
+<p>First Contact Date: <%=@job.contacted ? @job.contacted.strftime("%Y-%m-%d") : "N/A" %></p>
+<p>Onsite Date: <%=@job.onsite ? @job.onsite.strftime("%Y-%m-%d") : "N/A" %></p>
+<p>Offer Date: <%=@job.offer ? @job.offer.strftime("%Y-%m-%d") : "N/A" %></p>
+<p>Offer ($/yr): <%=@job.offer_amount ? @job.offer_amount.to_i : "N/A" %></p>
+<p>Note(s): <%=@job.notes ? @job.notes : "" %></p>
+<br>
+<a class="btn btn-primary" href="/profile" role="button">Go Back</a>
+<a class="btn btn-primary" href="/job/<%=@job.id%>/edit" role="button">Edit</a>
+<div>

@@ -2,18 +2,17 @@
 <h1>Greetings, <%= @user.first_last_name %></h1>
 <br>
 <br>
-<h3><a href="/job/new">Track New Application</a></h3>
+<h5><a href="/job/new">+ Track New Application</a></h5>
 <br>
 <table class="table table-hover table-sm">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Req Experience</th>
+      <th scope="col">Title (Click to view)</th>
+      <th scope="col">Short Description</th>
       <th scope="col">Posting Link</th>
       <th scope="col">Resume Link</th>
-      <th scope="col">Contact Date</th>
+      <th scope="col">First Contact Date</th>
       <th scope="col">Onsite Date</th>
       <th scope="col">Offer Date</th>
       <th scope="col">Offer ($/yr)</th>
@@ -25,9 +24,8 @@
 
     <tr>
       <th scope="row"><%= i %></th>
-      <td><%=job.title%></td>
+      <td><a href="/job/<%=job.id%>"><%=job.title%></a></td>
       <td><%=job.job_description%></td>
-      <td><%=job.min_years_exp%></td>
       <td><a href="<%=job.website_applied ? job.website_applied : ""%>" target="_blank"><%= job.website_applied ? "View Posting" : ""%></a></td>
       <td><a href="<%=job.resume_used ? job.resume_used : ""%>" target="_blank"><%= job.website_applied ? "View Resume" : ""%></a></td>
       <td><%=job.contacted ? job.contacted.strftime("%Y-%m-%d") : "" %></td>

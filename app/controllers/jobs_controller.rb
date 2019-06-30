@@ -31,4 +31,29 @@ class JobsController < ApplicationController
         end
     end
 
+    get '/job/:id' do
+        if logged_in?
+          @user = current_user
+          @job = @user.jobs.find_by_id(params[:id])
+          erb :'jobs/view'
+        else
+          redirect :'/'
+        end
+    end
+
+    get '/job/:id/edit' do
+        if logged_in?
+            @user = current_user
+            @job = @user.jobs.find_by_id(params[:id])
+            erb :'jobs/edit'
+        else
+            redirect :'/'
+        end
+    end
+
+
+    patch '/job/:id' do
+        binding.pry
+    end
+
 end

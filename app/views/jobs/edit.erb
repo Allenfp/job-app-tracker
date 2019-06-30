@@ -1,0 +1,60 @@
+<div class="container">
+    <form action="/job/<%=@job.id%>" method='POST'>
+        <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+        <div class="form-group">
+            <label for="title">Job Title:</label>
+            <input type="textbox" class="form-control" id="title" name="title" value="<%=@job.title%>" >
+        </div>
+
+        <div class="form-group">
+            <label for="job_description">Short Description:</label>
+            <input type="text" class="form-control" id="job_description" name="job_description" value="<%=@job.job_description%>" >
+        </div>
+
+        <div class="form-group">
+            <label for="website_applied">Application (URL)</label>
+            <input type="text" class="form-control" id="website_applied" name="website_applied" value="<%=@job.website_applied%>" >
+        </div>
+
+        <div class="form-group">
+            <label for="resume_used">Resume Version Used (URL):</label>
+            <input type="text" class="form-control" id="resume_used" name="resume_used" value="<%=@job.resume_used%>" >
+        </div>
+
+        <div class="form-group">
+            <label for="min_years_exp">Minimum Required Years Experience:</label>
+            <input type="number" class="form-control" id="min_years_exp" name="min_years_exp" value="<%=@job.min_years_exp%>" >
+        </div>
+
+        <div class="form-group">
+            <label for="contacted">Contacted Date:</label>
+            <input type="date" class="form-control" id="contacted" name="contacted" value="<%=@job.contacted ? @job.contacted.strftime("%Y-%m-%d") : "" %>" >
+        </div>
+
+        <div class="form-group">
+            <label for="onsite">Onsite Date:</label>
+            <input type="date" class="form-control" id="onsite" name="onsite" value="<%=@job.onsite ? @job.onsite.strftime("%Y-%m-%d") : "" %>" >
+        </div>
+
+        <div class="form-group">
+            <label for="offer">Offer Date:</label>
+            <input type="date" class="form-control" id="offer" name="offer" value="<%=@job.offer ? @job.offer.strftime("%Y-%m-%d") : "" %>" >
+        </div>
+
+
+        <div class="form-group">
+            <label for="offer_amount">Offer Amount ($/yr):</label>
+            <input type="text" class="form-control" id="offer_amount" name="offer_amount" value="<%=@job.offer_amount.to_i%>" >
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Note(s):</label>
+            <textarea class="form-control" id="notes" name="notes" rows="20"><%=@job.notes%></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <br>
+</div>
