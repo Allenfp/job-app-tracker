@@ -1,0 +1,13 @@
+<div class="container">
+    <br>
+    <h1>Wait! Do you really want to delete <%= @job.title %>?</h1>
+    <br>
+    <form method="post" action="/job/<%=@job.id%>/delete">
+        <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Yes, please delete <%= @job.title %>">
+    </form>
+    <br>
+    <br>
+    <strong><a href="/job/<%=@job.id%>/edit"> Actually, no. I would like to go back to editing. </a></strong>
+
+</div>
