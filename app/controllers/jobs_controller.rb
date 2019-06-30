@@ -31,7 +31,6 @@ class JobsController < ApplicationController
     end
 
     get '/job/:id' do
-        # binding.pry
         if logged_in?
           @user = current_user
           @job = @user.jobs.find_by_id(params[:id])
@@ -91,7 +90,6 @@ class JobsController < ApplicationController
     delete '/job/:id/delete' do
         if logged_in?
           @job = current_user.jobs.find_by_id(params[:id])
-          binding.pry
           if @job
             @job.delete
             redirect to "/profile"
